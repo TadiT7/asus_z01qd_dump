@@ -1,0 +1,20 @@
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.build.servaddr=1
+persist.asus.micfansettings=1
+persist.odm.asus.batpolicy=0
+persist.odm.asus.station_sleep=true
+ro.secure=1
+security.perf_harden=1
+ro.adb.secure=1
+ro.allow.mock.location=0
+ro.debuggable=0
+#
+# BOOTIMAGE_BUILD_PROPERTIES
+#
+ro.bootimage.build.date=Fri Sep 28 14:41:07 CST 2018
+ro.bootimage.build.date.utc=1538116867
+ro.bootimage.build.fingerprint=asus/WW_Z01QD/ASUS_Z01QD_1:8.1.0/OPM1.171019.026/15.1616.1808.16-0:user/release-keys
+persist.sys.usb.config=none
+

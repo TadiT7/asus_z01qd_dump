@@ -1,0 +1,27 @@
+#!/system/bin/sh
+#echo "$0 $*"> /proc/fac_printklog
+#===============================
+#main 
+#===============================
+temp=$(cat /sys/bus/i2c/devices/i2c-1/1-0038/ftinitstatus)
+
+
+if [ "$temp" == "1" ] ;then
+#focal touch
+	#echo "focal touch!"
+	echo /system/etc/JEDI_Focal.ini>/sys/bus/i2c/devices/i2c-1/1-0038/fts_test
+	#echo "echo ini end"
+	cat /sys/bus/i2c/devices/i2c-1/1-0038/fts_test
+	cp /sdcard/station_TP_Raw_data.txt /data/data/station_TP_Raw_data.txt
+	cp /sdcard/station_TP_Raw_data.csv /data/data/station_TP_Raw_data.csv
+	chmod 0777 /data/data/station_TP_Raw_data.csv
+	chmod 0777 /data/data/station_TP_Raw_data.txt
+	#echo "cat ftsscaptest"
+else
+	echo "touch not successful!"	
+fi
+#*)
+#    echo "NO This Panel!"
+#;;
+
+

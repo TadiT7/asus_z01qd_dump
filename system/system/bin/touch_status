@@ -1,0 +1,3 @@
+#!/system/bin/sh
+#echo "$0 $*"> /proc/fac_printklog
+cat /sys/bus/i2c/devices/i2c-4/4-0038/ftinitstatus

@@ -1,0 +1,72 @@
+#!/system/bin/sh
+#echo "$0 $*"> /proc/fac_printklog
+my_exit() {
+
+status=$(cat /sys/bus/i2c/devices/i2c-4/4-0038/disable_touch)
+	if [ "$temp" == "1" ]
+	then
+		if [ "$status" == "1" ]
+		then
+    		echo "Enable OK"
+		elif [ "$status" == "0" ]
+		then
+			echo "Enable Fail"
+		else
+		 	echo "Fail"
+		fi
+	elif [ "$temp" == "0" ]
+	then
+		if [ "$status" == "0" ]
+		then
+    		echo "Disable OK"
+		elif [ "$status" == "1" ]
+		then
+			echo "Disable Fail"
+		else
+		 	echo "0 $stauts Fail"
+		fi
+	else
+		echo "Fail"
+	fi
+
+}
+
+help() {
+    echo "
+API: ATD TestCommand Interface 
+
+FORMAT: adb shell /data/data/touch_function Para1
+
+RETURN VALUE: 0/1   (0 = fail , 1 = pass)
+
+USAGE:
+  <Disable touch funtion.>
+    (para1) 0
+
+  <Enable touch funtion.>
+    (para1) 1
+
+"
+exit 0
+}
+
+#===============================
+#main 
+#===============================
+
+temp=$1
+case $1 in
+#Disable touch funtion
+"0")
+	echo 0 >/sys/bus/i2c/devices/i2c-4/4-0038/disable_touch
+;;
+#Enable touch funtion
+"1")
+	echo 1 >/sys/bus/i2c/devices/i2c-4/4-0038/disable_touch
+;;
+*)
+    help
+;;
+esac
+
+my_exit success
